@@ -11,14 +11,12 @@ const validate = (req, res, next) => {
     };
     next();
 }
-
 const registerValidation = [
     body('name').notEmpty().withMessage('Name is required'),
     body('email').isEmail().withMessage('Please use a valid email address'),
     body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
     body('country').notEmpty().withMessage('Country is required'),
 ];
-
 const loginValidation = [
     body('email').isEmail().withMessage('Please use a valid email address'),
     body('password').notEmpty().withMessage('Password is required'),

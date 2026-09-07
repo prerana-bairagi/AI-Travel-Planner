@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import authRoutes from './routes/auth.js'
+import tripRoutes from './routes/trip.js'
 
 
 const app = express();
@@ -15,5 +16,7 @@ if(process.env.NODE_ENV === "developement"){
 
 // Auth Routes
 app.use("/api/auth", authRoutes);
+// Trip Routes
+app.use("/api/trip", tripRoutes);
 
 export default app;
