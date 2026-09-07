@@ -62,6 +62,21 @@ userSchema.pre('save', async function () {
             throw new Error(`Failed to hash password: ${error.message}`);
         }
     }
+
+    // Map currency if country is modified
+    if (this.isModified("country")) {
+        const CurrencyMap = {
+            "INDIA": "INR",
+            "UNITED STATES": "USD",
+            "UNITED KINGDOM": "GBP",
+            "EUROPEAN UNION": "EUR",
+            "AUSTRALIA": "AUD",
+            "CANADA": "CAD",
+            "JAPAN": "JPY",
+            // Add more countries and their currencies as needed
+        };
+        this.currency = CurrencyMap[this.country.toUpperCase()] || "INR"; // Default to INR if country not found
+    }
 });
 
 

@@ -139,8 +139,14 @@ const getMe = async (req, res) => {
     }
 };
 
+
+const logout = async (req, res) => {
+    res.status(200).json({ message: "Logout successful" });
+};
+
 export default {
     register,
     login,
     getMe,
+    logout,
 };
